@@ -1,0 +1,17 @@
+name: Prisma Cloud Vulnerability Scan
+on:
+   workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: checkov-action
+    
+    steps:
+      - name: PC Checkout repo
+        uses: actions/checkout@master
+
+      - name: PC Checkov Scan
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: /
+          framework: terraform
